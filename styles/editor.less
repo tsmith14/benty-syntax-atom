@@ -1,0 +1,73 @@
+atom-text-editor, :host {
+  background-color: @syntax-background-color;
+  color: @syntax-text-color;
+}
+
+atom-text-editor .gutter, :host .gutter {
+  background-color: @syntax-gutter-background-color;
+  color: @syntax-gutter-text-color;
+}
+
+atom-text-editor .gutter .line-number.cursor-line, :host .gutter .line-number.cursor-line {
+  background-color: @syntax-gutter-background-color-selected;
+  color: @syntax-gutter-text-color;
+}
+
+atom-text-editor .gutter .line-number.cursor-line-no-selection, :host .gutter .line-number.cursor-line-no-selection {
+  color: @syntax-gutter-text-color;
+}
+
+atom-text-editor .gutter .line-number.folded .icon-right:before, :host .gutter .line-number.folded .icon-right:before, atom-text-editor .fold-marker:after, :host .fold-marker:after {
+  color: @syntax-gutter-text-color-selected;
+}
+
+atom-text-editor .wrap-guide, :host .wrap-guide {
+  // Make text wrap guide semi-transparent so that cursor can show through it
+  .same-color-with-alpha(
+    background-color; @syntax-wrap-guide-color; @syntax-background-color; 0.15
+  ) !important;
+  color: @syntax-wrap-guide-color;
+}
+
+atom-text-editor .indent-guide, :host .indent-guide {
+  color: @syntax-indent-guide-color;
+}
+
+atom-text-editor .invisible-character, :host .invisible-character {
+  color: @syntax-invisible-character-color;
+}
+
+atom-text-editor .bracket-matcher .region, :host .bracket-matcher .region {
+  border-bottom: 1px solid @syntax-cursor-color;
+  // Bump up z-index so that the border shows up over the current line background
+  z-index: 0;
+}
+
+// Use a hack to increase specificity so that we override the default color
+// included with the highlight-selected package.
+atom-text-editor .highlights .highlight-selected .region.region.region, :host .highlights .highlight-selected .region.region.region {
+  border-color: @syntax-result-marker-color;
+}
+
+atom-text-editor .find-result .region, :host .find-result .region {
+  background-color: transparent;
+  border-color: @syntax-result-marker-color;
+}
+
+atom-text-editor .current-result .region, :host .current-result .region {
+  border-color: @syntax-result-marker-color-selected;
+  // Bump up z-index so that the border shows up over the selection background
+  z-index: 0;
+}
+
+atom-text-editor.is-focused .cursor, :host(.is-focused) .cursor {
+  border-color: @syntax-cursor-color;
+}
+
+atom-text-editor.is-focused .selection .region, :host(.is-focused) .selection .region {
+  background-color: @syntax-selection-color;
+}
+
+atom-text-editor.is-focused .line-number.cursor-line-no-selection, atom-text-editor.is-focused .line.cursor-line, :host(.is-focused) .line-number.cursor-line-no-selection, :host(.is-focused) .line.cursor-line {
+  background-color: #1f4662;
+}
