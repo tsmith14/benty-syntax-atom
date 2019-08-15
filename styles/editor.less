@@ -1,73 +1,96 @@
+
+// Editor styles (background, gutter, guides)
+
 atom-text-editor {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
-}
 
-atom-text-editor .gutter {
-  background-color: @syntax-gutter-background-color;
-  color: @syntax-gutter-text-color;
-}
+  .line.cursor-line {
+    background-color: @syntax-cursor-line;
+  }
 
-atom-text-editor .gutter .line-number.cursor-line {
-  background-color: @syntax-gutter-background-color-selected;
-  color: @syntax-gutter-text-color;
-}
+  .invisible {
+    color: @syntax-text-color;
+  }
 
-atom-text-editor .gutter .line-number.cursor-line-no-selection {
-  color: @syntax-gutter-text-color;
-}
+  .cursor {
+    border-left: 2px solid @syntax-cursor-color;
+  }
 
-atom-text-editor .gutter .line-number.folded .icon-right:before, atom-text-editor .fold-marker:after {
-  color: @syntax-gutter-text-color-selected;
-}
+  .selection .region {
+    background-color: @syntax-selection-color;
+  }
 
-atom-text-editor .wrap-guide {
-  // Make text wrap guide semi-transparent so that cursor can show through it
-  .same-color-with-alpha(
-    background-color; @syntax-wrap-guide-color; @syntax-background-color; 0.15
-  ) !important;
-  color: @syntax-wrap-guide-color;
-}
+  .bracket-matcher .region {
+    border-bottom: 1px solid @syntax-cursor-color;
+    box-sizing: border-box;
+  }
 
-atom-text-editor .indent-guide {
-  color: @syntax-indent-guide-color;
-}
+  .invisible-character {
+    color: @syntax-invisible-character-color;
+  }
 
-atom-text-editor .invisible-character {
-  color: @syntax-invisible-character-color;
-}
+  .indent-guide {
+    color: @syntax-indent-guide-color;
+  }
 
-atom-text-editor .bracket-matcher .region {
-  border-bottom: 1px solid @syntax-cursor-color;
-  // Bump up z-index so that the border shows up over the current line background
-  z-index: 0;
-}
+  .wrap-guide {
+    background-color: @syntax-wrap-guide-color;
+  }
 
-// Use a hack to increase specificity so that we override the default color
-// included with the highlight-selected package.
-atom-text-editor .highlights .highlight-selected .region.region.region {
-  border-color: @syntax-result-marker-color;
-}
+  // find + replace
+  .find-result .region.region.region,
+  .current-result .region.region.region {
+    border-radius: 2px;
+    background-color: @syntax-result-marker-color;
+    transition: border-color .4s;
+  }
+  .find-result .region.region.region {
+    border: 2px solid transparent;
+  }
+  .current-result .region.region.region {
+    border: 2px solid @syntax-result-marker-color-selected;
+    transition-duration: .1s;
+  }
 
-atom-text-editor .find-result .region {
-  background-color: transparent;
-  border-color: @syntax-result-marker-color;
-}
+  .gutter {
 
-atom-text-editor .current-result .region {
-  border-color: @syntax-result-marker-color-selected;
-  // Bump up z-index so that the border shows up over the selection background
-  z-index: 0;
-}
+    .line-number {
+      color: @syntax-gutter-text-color;
+      -webkit-font-smoothing: antialiased;
 
-atom-text-editor.is-focused .cursor {
-  border-color: @syntax-cursor-color;
-}
+      &.cursor-line {
+        color: @syntax-gutter-text-color-selected;
+        background-color: @syntax-gutter-background-color-selected;
+      }
+      &.cursor-line-no-selection {
+        background-color: transparent;
+      }
 
-atom-text-editor.is-focused .selection .region {
-  background-color: @syntax-selection-color;
-}
+      .icon-right {
+        color: @syntax-text-color;
+      }
+    }
 
-atom-text-editor.is-focused .line-number.cursor-line-no-selection, atom-text-editor.is-focused .line.cursor-line {
-  background-color: #1f4662;
+    &:not(.git-diff-icon) .line-number.git-line-removed {
+      &.git-line-removed::before {
+        bottom: -3px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 25px;
+        border-bottom: 1px dotted fade(@syntax-color-removed, 50%);
+        pointer-events: none;
+      }
+    }
+  }
+
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: @syntax-gutter-text-color-selected;
+  }
 }
