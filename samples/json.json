@@ -1,0 +1,31 @@
+{
+  "name": "JSON",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "@expo/react-native-action-sheet": "^3.0.3",
+    "@react-native-community/async-storage": "^1.5.0",
+    "@react-native-community/blur": "^3.3.1",
+    "@react-native-community/netinfo": "^3.2.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
+    "babel-jest": "23.2.0",
+    "babel-preset-react-native": "^5.0.0",
+    "metro-react-native-babel-preset": "^0.45.6",
+    "moment": "^2.23.0",
+    "normalizr": "^3.3.0",
+    "react": "16.8.3",
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "schedule": "^0.4.0"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  }
+}
