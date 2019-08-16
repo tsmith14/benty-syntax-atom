@@ -42,14 +42,15 @@ atom-text-editor {
   .find-result .region.region.region,
   .current-result .region.region.region {
     border-radius: 2px;
-    background-color: @syntax-result-marker-color;
+    // background-color: @syntax-result-marker-color;
+    border: 1px solid @syntax-result-marker-color;
     transition: border-color .4s;
   }
-  .find-result .region.region.region {
-    border: 2px solid transparent;
-  }
+  // .find-result .region.region.region {
+  //   border: 2px solid transparent;
+  // }
   .current-result .region.region.region {
-    border: 2px solid @syntax-result-marker-color-selected;
+    border: 1px solid @syntax-result-marker-color-selected;
     transition-duration: .1s;
   }
 
